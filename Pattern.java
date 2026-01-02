@@ -1,6 +1,6 @@
 class Pattern {
     public static void triangle(){
-         int rows = 5;
+        int rows = 5;
 
         for (int i = 1; i <= rows; i++) {
             for (int j = 1; j <= i; j++) {
@@ -100,7 +100,62 @@ class Pattern {
             }
             System.out.println();
         }
+        }
+        public static void butterfly() {
+            int rows = 5;
+            for (int i = 1; i <= rows; i++) {
+                for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+                }
+                for( int k=0;k<2*rows-2*i;k++ ){
+                    System.out.print("  ");
+                }
+                for (int j = 1; j <= i; j++) {
+                System.out.print("* ");
+                }
+                System.out.println();
+            }
+            for (int i = 1; i <= rows; i++) {
+                for (int j = i; j <=rows; j++) {
+                System.out.print("* ");
+                }
+                for( int k=0;k<2*i-2;k++ ){
+                    System.out.print("  ");
+                }
+                for (int j = i; j <= rows; j++) {
+                System.out.print("* ");
+                }
+                System.out.println();
+            }
+        }
+        public static void rohombus(int l,int b) {
+        for(int i=0;i<l;i++){
+            for(int k=0;k<l-i-1;k++){
+                System.out.print ("  ");
+            }
+            for(int j=0;j<b;j++){    
+                System.out.print("* ");
+            }
+            System.out.println(" ");
+        }
     }
+        public static void Hollowrohombus(int l,int b) {
+        for(int i=0;i<l;i++){
+            for(int k=0;k<l-i-1;k++){
+                System.out.print ("  ");
+            }
+            for(int j=0;j<b;j++){    
+                if(i==0||i==l-1||j==0||j==b-1){
+                    System.out.print("* ");
+                }
+                else{
+                    System.out.print("  ");
+                }
+            }
+            System.out.println(" ");
+        }
+    }
+
     public static void main(String [] args) {
         triangle();
         Itriangle();
@@ -110,5 +165,8 @@ class Pattern {
         rotatedtriangle();
         Flloydtriangle();
         zeroonetriangle();
+        butterfly();
+        rohombus(5, 5);
+        Hollowrohombus(5, 5);
     }
 }

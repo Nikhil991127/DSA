@@ -36,8 +36,40 @@ public class TwoDArray {
             endcol--;
         }
     }
+    public static int diagonalsum(int matrix[][]){
+        int sum=0;
+        if (matrix.length==matrix[0].length){
+            for(int i=0;i<matrix.length;i++){
+                sum+=matrix[i][i];
+                if(i!=matrix.length-i-1){
+                    sum+=matrix[i][matrix.length-i-1];
+                }
+            }
+            return sum;
+        }
+        else{
+            return -1;
+        }
+    }
+    public static boolean search(int mat[][],int target){
+        int row=0;
+        int col= mat.length-1;
+        while(row>=0&&row<=mat.length&&col>=0&&col<=mat[0].length){
+            if(mat[row][col]==target){
+                System.out.println("item found at ("+row+","+col+")");
+                return true;
+            }
+            else if(target>mat[row][col]){
+                row++;
+            }
+            else{
+                col--;
+            }
+        }
+        return false;
+    }
     public static void main(String [] args){
-        int arr[][]=new int[3][4];
+        int arr[][]=new int[4][4];
         Scanner sc= new Scanner(System.in);
         for(int i=0;i<arr.length;i++){
             for(int j=0;j<arr[0].length;j++){
@@ -51,5 +83,7 @@ public class TwoDArray {
             System.out.println("");
         }
         Spiral(arr);
+        System.out.println(diagonalsum(arr));
+        System.err.println(search(arr, 33));
     }
 }

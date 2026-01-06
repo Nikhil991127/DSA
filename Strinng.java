@@ -1,4 +1,3 @@
-import java.util.*;
 public class Strinng {
    public static boolean isPlanedrome(String str){
     for(int i=0;i<str.length()-1/2;i++){
@@ -29,13 +28,25 @@ public class Strinng {
     int y2=y*y;
     return (float)Math.sqrt(x2+y2);
    }
+   public static boolean Angram(String str1,String str2){
+    for(int i=0;i<str1.length();i++){
+        if(str2.indexOf(str1.charAt(i))==-1){
+            return false;
+        }
+    }
+    return true;
+
+   }
     public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
+    /*Scanner sc=new Scanner(System.in);
     String str=sc.nextLine();
     System.out.print(str);
     System.out.println(isPlanedrome(str));
     String path="SSSWWWW";
-    System.out.println(ShortestPath(path));
+    System.out.println(ShortestPath(path));*/
+    String str1="race";
+    String str2="caadas";
+    System.out.println(Angram(str1, str2));
     
    }
 

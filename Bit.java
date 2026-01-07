@@ -88,7 +88,7 @@ public class Bit {
         clearLastithbits(15, 4);
         Clearibits(10, 2, 4);
         ispowerof2(8);
-        countnoOfsetbits(11)
+        countnoOfsetbits(11);
         swaptwono(10, 20x);
 
 

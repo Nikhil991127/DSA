@@ -69,6 +69,14 @@ public class Bit {
         }
         System.out.println("Total no of set bits= "+count);
     }
+    public static void swaptwono(int x,int y){
+        x=x^y;
+        y=x^y;
+        x=x^y;
+        System.out.println(x);
+        System.out.println(y);
+
+    }
     public static void main(String[] args) {
         int i=21;
         oddeven(i);
@@ -80,7 +88,8 @@ public class Bit {
         clearLastithbits(15, 4);
         Clearibits(10, 2, 4);
         ispowerof2(8);
-        countnoOfsetbits(11);
+        countnoOfsetbits(11)
+        swaptwono(10, 20x);
 
 
 

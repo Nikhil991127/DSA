@@ -1,6 +1,5 @@
 public class Bit {
    public static void oddeven(int i){
-        int bitmask =1;
         if((i & 1) ==1){
             System.out.println("no is odd");
         }
@@ -17,12 +16,12 @@ public class Bit {
         }
     }
     public static void setithbit(int no,int ith){
-        int bitmask=(1<<ith);;
+        int bitmask=(1<<ith);
         no=no|bitmask;
         System.out.println(no);
     }
      public static void clearithbit(int no,int ith){
-        int bitmask=~(1<<ith);;
+        int bitmask=~(1<<ith);
         no=no&bitmask;
         System.out.println(no);
     }

@@ -51,6 +51,24 @@ public class Recursion {
         return Sorted(i+1, arr);
 
     }
+    public static int power(int x,int n){
+        if(n==0){
+            return 1;
+        }
+        int result= x*power(x, n-1);
+        return result;
+    }
+    public static int Opower(int x,int n){
+        if(n==0){
+            return 1;
+        }
+        if (n%2==0){
+            return power(x,n/2)*power(x, n/2);
+        }
+        else{
+            return x*power(x, n/2)*power(x, n/2);
+        }
+    }
 
     public static void main(String [] args){
         System.out.println(factorial(5));
@@ -61,7 +79,9 @@ public class Recursion {
         System.out.println(fibonacci(7));
         int arr[]={1,2,6,4,5};
         System.out.println(Sorted(0,arr ));
-        System.out.println("hello Nik");
+        System.out.println(power(5, 4));
+        System.out.println(Opower(5, 3));
+
 
 
     }

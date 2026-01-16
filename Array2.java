@@ -6,6 +6,19 @@ public class Array2 {
         System.out.println("");
 
     }
+    public static int removeDuplicates(int[] nums) {
+        if(nums.length==0){
+            return 0;
+        }
+        int k=1;
+        for(int i=1;i<nums.length;i++){
+            if(nums[i-1]!=nums[i]){
+                nums[k]=nums[i];
+                k++;
+            }
+        }
+        return k;  
+    }
     public static int maxsumSubarray(int arr[]){
         int maxsum=Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
@@ -134,6 +147,8 @@ public class Array2 {
         public static void main(String []args){
         int array[]={1,-2,-1,3};
         int heights[]={4,2,0,6,3,2,5};
+        int arr[]={0,0,1,1,2,6,7,7};
+        System.out.println(removeDuplicates(arr));
         System.out.println(maxsumSubarray(array));
         System.out.println(PmaxsumSubarray(array));
         System.out.println(Kadane(array));

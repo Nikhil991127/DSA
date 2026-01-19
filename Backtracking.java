@@ -103,8 +103,67 @@ public class Backtracking {
         int w2=gridways(i, j+1, m, n);
         return w1+w2;
     }
+    public static void printsudoku(int Sudoku[][]){
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                System.out.print(Sudoku[i][j]+" ");
+            }
+            System.out.println("");
+        }
+    }
+    public static boolean issafe(int Sudoku[][],int row,int col,int digit){
+        //in row
+        for(int i=0;i<9;i++){
+            if(Sudoku[row][i]==digit){
+                return false;
+            }
+            //in col
+            if(Sudoku[i][col]==digit){
+                return false;
+            }
+        }
+        //in grid
+        int sc=(col/3)*3;
+        int sr=(row/3)*3;
+        for(int i=sr;i<sr+3;i++){
+            for(int j=sc;j<sc+3;j++){
+                if(Sudoku[i][j]==digit){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+    public static boolean Sudokusolver(int Sudoku[][],int row,int col){
+        if(row==9){
+            return true;
+        }
+        int nextcol=col+1;
+        int nextrow=row;
+        if(col+1==9){
+            nextcol=0;
+            nextrow=row+1;
+        }
+        if(Sudoku[row][col]!=0){
+            return Sudokusolver(Sudoku, nextrow, nextcol);
+        }
+        for(int digit=1;digit<=9;digit++){
+            if(issafe(Sudoku,row,col,digit)){
+                Sudoku[row][col]=digit;
+                if(Sudokusolver(Sudoku, nextrow, nextcol)){
+                    return true;
+                }
+                Sudoku[row][col]=0;
+            }
+        }
+        return false;
+    }
+    public static boolean mazeSolver(int maze[][],int i,int j){
+        return true;
+    }
     public static void main(String[] args) {
-        int arr[]=new int[5];
+        /*int arr[]=new int[5];
         Assign(0, arr);
         print(arr);
         substring("abc", "", 0);
@@ -117,7 +176,20 @@ public class Backtracking {
         }
         Nqueen(board, 0);
         int grid[][]=new int[4][4];
-        System.out.println(gridways(0, 0, 4, 4));
+        System.out.println(gridways(0, 0, 4, 4));*/
+        /*int sudoku[][]={{0,0,8,0,0,0,0,0,0},
+        {4,9,0,1,5,7,0,0,2},
+        {0,0,3,0,0,4,1,9,0},
+        {1,8,5,0,6,0,0,2,0},
+        {0,0,0,0,2,0,0,6,0},
+        {9,6,0,4,0,5,3,0,0},
+        {0,3,0,0,7,2,0,0,4},
+        {0,4,9,0,3,0,0,5,7},
+        {8,2,7,0,0,9,0,1,3}};
+        if(Sudokusolver(sudoku, 0, 0)){
+            System.out.println("solution exist");
+            printsudoku(sudoku);
+        }*/
         
     }
 }

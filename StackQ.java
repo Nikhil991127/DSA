@@ -89,6 +89,32 @@ public class StackQ {
         }
         return false;
     }
+    public static boolean isDuplicate(String str){
+        Stack<Character> s=new Stack<>();
+        for(int i=0; i<str.length();i++){
+            char ch= str.charAt(i);
+            if(ch==')'){
+                System.out.println(s);
+                int count=0;
+                while(s.peek()!='('){
+                    s.pop();
+                    count=count+1;
+                    System.out.println(count);
+                }
+                System.out.println(count);
+                if(count<1){
+                    return true;
+                }
+                else{
+                    s.pop();
+                }
+            }
+            else{
+                s.push(ch);
+            }
+        }
+        return false;
+    }
     public static void main (String[] args){
         /*Stack<Integer> s=new Stack<>();
         s.push(10);
@@ -116,5 +142,6 @@ public class StackQ {
         }
         System.out.println("");*/
         System.out.println(isValid("{[()]}"));
+        System.err.println(isDuplicate("((a+b))"));
     }
 }

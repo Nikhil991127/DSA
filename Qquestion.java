@@ -33,6 +33,15 @@ public class Qquestion {
             q.add(q.remove());
         } 
     }
+    public static void reversal(Queue<Integer> q){
+        Stack<Integer> s= new Stack<>();
+        while(!q.isEmpty()){
+            s.push(q.remove());
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop());
+        }
+    }
 
     public static void main(String[] args){
         //printnonrepeating("aabccxb");
@@ -47,7 +56,8 @@ public class Qquestion {
          q.add(8);   
          q.add(9);   
          q.add(10); 
-         interLeave(q);
+        // interLeave(q);
+        reversal(q);
         while(!q.isEmpty()){
             System.out.print(q.remove()+" ");
         }

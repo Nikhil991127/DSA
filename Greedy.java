@@ -1,9 +1,15 @@
+import java.util.*;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
-
-
+/*class job{
+    int id; 
+    int deadline;
+    int profit;
+    public job(int i,int d,int p){
+        id=i;
+        deadline=d;
+        profit=p;
+    }
+}*/
 public class Greedy {
     public static void main(String[] args){
         /*int start[]={1,3,0,5,8,5};
@@ -34,7 +40,7 @@ public class Greedy {
             System.out.println("A"+ans.get(i));
         }*/
        //knapsack problem
-       int weight[]={10,20,30};
+       /*int weight[]={10,20,30};
        int value[]={60,100,120};
        int capacity=50;
        double ratio[][]=new double[weight.length][2];
@@ -56,6 +62,99 @@ public class Greedy {
             capacity=0;
         }
        }
-       System.out.println(finalval);
+       System.out.println(finalval);*/
+       //min absolute diffrence
+       /*int A[]={1,2,3};
+       int B[]={2,1,3};
+       Arrays.sort(A);
+       Arrays.sort(B);
+       int mindif=0;
+       for(int i=0;i<A.length;i++){
+        mindif+= Math.abs(A[i]-B[i]);
+       }
+       System.out.println("The min absolute diffrence="+mindif); */
+       //maximum length
+       /*int pairs[][]={{5,24},{39,60},{5,28},{27,40},{50,90}};
+       Arrays.sort(pairs,Comparator.comparingDouble(o->o[1]));
+       int chainlen=1;
+       int chainend=pairs[0][1];
+       for(int i=1;i<pairs.length;i++){
+        if(pairs[i][0]>chainend){
+            chainlen++;
+            chainend=pairs[i][1];
+        }
+       }
+       System.out.println("chain length ="+chainlen);*/
+
+       //indian coins
+       /*Integer coins[]={1,2,5,10,20,50,100,500};
+       Arrays.sort(coins,Collections.reverseOrder());
+       int value=121;
+       int count=0;
+       for(int i=0;i<coins.length;i++){
+        if(coins[i]<=value){
+            while(coins[i]<=value){
+                count++;
+                value=value-coins[i];
+            }
+        }
+       }      
+       System.out.println(count); */ 
+
+       //job sequencing
+       /*int jobinfo[][]={{4,20},{1,10},{1,40},{1,30}};
+
+       ArrayList<job> jobs=new ArrayList<>();
+       for(int i=0;i<jobinfo.length;i++){
+        jobs.add(new job(i,jobinfo[i][0],jobinfo[i][1]));
+       }
+       Collections.sort(jobs,(obj1,obj2)->obj2.profit-obj1.profit);
+       ArrayList<Integer> seq=new ArrayList<>();
+       int time=0;
+       for(int i=0;i<jobs.size();i++){
+        job curr=jobs.get(i);
+        if(curr.deadline>time){
+            seq.add(curr.id);
+            time++;
+        }
+       }
+       System.err.println("max no of jobs ="+seq.size());
+       for(int i=0;i<seq.size();i++){ 
+        System.out.println(seq.get(i));
+       }*/
+      //choclate problem
+      Integer chocver[]={2,1,3,1,4};
+      Integer chochor[]={4,1,2};
+      Arrays.sort(chochor,Collections.reverseOrder());
+      Arrays.sort(chocver,Collections.reverseOrder());
+      int h=0;
+      int v=0;
+      int hp=1;
+      int vp=1;
+      int cost=0;
+      while(h<chochor.length &&v<chocver.length){
+        if(chochor[h]>=chocver[v]){
+            cost+=(chochor[h]*vp);
+            hp++;
+            h++;
+        }
+        else{
+            cost+=(chocver[v]*hp);
+            vp++;
+            v++;
+        }
     }
+    while(h<chochor.length){
+        cost+=(chochor[h]*vp);
+        hp++;
+        h++;
+    }
+    while(v<chocver.length){
+        cost+=(chocver[v]*hp);
+        vp++;
+        v++;
+    }
+    System.out.println("the min mum cost="+cost);
+    }
+
 }

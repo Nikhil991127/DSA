@@ -1,3 +1,8 @@
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Array1 {
     public static void printarray(int arr[]){
         for(int i=0;i<arr.length;i++){
@@ -81,9 +86,56 @@ public class Array1 {
             }
         }
     }
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int newarr[]=nums1;
+        nums1=new int[m+n];
+        System.out.println(nums1.length);
+        int i=0;
+        int j=0;
+        int idx=0;
+        while(i<m&&j<n){
+            if(newarr[i]<=nums2[j]){
+                nums1[idx]=newarr[i];
+                i++;
+                idx++;
+            }
+            else{
+                nums1[idx]=nums2[j];
+                j++;
+                idx++;
+            }
+        }
+        while(i<m){
+           nums1[idx]=newarr[i];
+           i++;
+           idx++;
+        }
+        while(j<n){
+            nums1[idx]=nums2[j];
+            j++;
+            idx++;
+        }
+        printarray(nums1);
+    }
     public static void main(String []args){
-        int array[]={10,20,30,40,50};
-        int postion= BinarySearch(array, 30);
+        int nums1[]={1,2,3,0,0,0};
+        int nums2[]={2,5,6};
+        merge(nums1, 3, nums2, 3);
+        System.out.println(nums1.length);
+        printarray(nums1);
+        
+        int a=2;
+        int b=-1;
+        int c=-1;
+        int d=a^b;
+        int e=c^d;
+        System.err.println(e);
+        List<List<Integer>> ans=new ArrayList<>();
+        ans.add(Arrays.asList(0, 1, 2));
+        System.out.println(ans);
+
+
+        /*int postion= BinarySearch(array, 30);
         System.out.println("largest no in array is "+largestno(array) );
         System.out.println("Smallest no in array is "+smallestno(array) );
         if (postion==-1){
@@ -98,7 +150,7 @@ public class Array1 {
         System.out.println("after reverse");
         printarray(array);
         allpairs(array);
-        Subarray(array);
+        Subarray(array);*/
 
     }
 }

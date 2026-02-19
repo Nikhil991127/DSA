@@ -1,3 +1,6 @@
+
+import java.util.Queue;
+
 public class Btree{
     static class Node{
         int data;
@@ -45,14 +48,73 @@ public class Btree{
             postorder(root.right);
             System.out.print(root.data+" ");
         }
+        public static void levelordertraversal(Node root){
+            if(root==null){
+                return ;
+            }
+            Queue<Node> Q=new java.util.LinkedList<>();
+            Q.add(root);
+            Q.add(null);
+            while(!Q.isEmpty()){
+                Node currNode=Q.remove();
+                if(currNode==null){
+                    System.out.println("");
+                    if(Q.isEmpty()){
+                        break;
+                    }else{
+                        Q.add(null);
+                    }
+                }
+                else{
+                    System.out.print(currNode.data+" ");
+                    if(currNode.left!=null){
+                        Q.add(currNode.left);
+                    }
+                    if(currNode.right!=null){
+                        Q.add(currNode.right);
+                    }
+                }
+            }
+        }
+        public static int height(Node root){
+            if(root==null){
+                return 0;
+            }
+            int lh=height(root.left);
+            int rh=height(root.right);
+            return Math.max(lh,rh)+1;
+        }
+        public static int count(Node root){
+            if(root==null){
+                return 0;
+            }
+            int lcount=count(root.left);
+            int rcount=count(root.right);
+            return lcount+rcount+1;
+        }
+        public static int sum(Node root){
+            if(root==null){
+                return 0;
+            }
+            int lsum=sum(root.left);
+            int rsum=sum(root.right);
+            return lsum+rsum+root.data;
+        }
     }
     public static void main(String[] args){
-        int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,9,-1,-1 };
+        int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1 };
         BinaryTree tree=new BinaryTree();
-        Node root=tree.buildTree(nodes);
-        System.out.println(root.data);
+        ///Node root=tree.buildTree(nodes);
+        //System.out.println(root.data);
         //tree.preorder(root);
         //tree.inorder(root);
-        tree.postorder(root);
+        //tree.postorder(root);
+        Node root=new Node(1);
+        root.left= new Node(2);
+        root.right=new Node(3);
+        //tree.levelordertraversal(root);
+        System.out.println(tree.height(root));
+        System.out.println(tree.count(root));
+        System.out.println(tree.sum(root));
     }
 }  

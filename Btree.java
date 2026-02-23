@@ -118,5 +118,6 @@ public class Btree{
         System.out.println(tree.sum(root));
         System.out.println(tree.sum(root));
         System.out.println(tree.sum(root));
+        System.out.println(tree.sum(root));
     }
 }  
